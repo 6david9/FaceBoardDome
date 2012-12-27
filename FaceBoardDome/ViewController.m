@@ -19,10 +19,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _faceBoard = [[FaceBoard alloc]init];
     [self.textView becomeFirstResponder];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +50,7 @@
 
 - (void)keyboardDidHide:(NSNotification*)notification {
     _faceBoard.inputTextView = self.textView;
+    
     self.textView.inputView = _faceBoard;
     [self.textView becomeFirstResponder];
 }
